@@ -12,7 +12,7 @@ find_package(Qt5 COMPONENTS
         Widgets
         OpenGL
         REQUIRED)
-find_package(OpenSceneGraph 2.0.0 REQUIRED osgViewer osgDB osgUtil osgQt5 osgGA)
+find_package(OpenSceneGraph 2.0.0 REQUIRED osgViewer osgDB osgUtil osgQt5 osgGA osgEarth)
 file(GLOB_RECURSE CPP_HEAD_FILES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 file(GLOB_RECURSE CPP_SOUCE_FILES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 
