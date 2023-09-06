@@ -31,7 +31,6 @@ if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
   )
 endif()
 
-add_subdirectory(Modules)
 add_subdirectory(Apps)
 add_subdirectory(Tests)
 
@@ -39,14 +38,13 @@ if(ENABLE_DOCS)
   file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/../Docs)
   build_docs(PROCESS_DOXYFILE TRUE DOXYFILE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Docs/Doxyfile.in)
 endif()
-set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT DemoApp)
+set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT osgEarthQtApp)
 
 if(CLANG_FORMAT_EXE)
   message(STATUS "Found clang format ............ Configuring ..............")
   file(GLOB_RECURSE FFILES ${CMAKE_SOURCE_DIR}/Modules/*.[hc] ${CMAKE_SOURCE_DIR}/Modules/*.[hc]pp ${CMAKE_SOURCE_DIR}/Apps/*.[hc] ${CMAKE_SOURCE_DIR}/Apps/*.[hc]pp)
   clang_format(${PROJECT_NAME}Format ${FFILES})
   set_target_properties(${PROJECT_NAME}Format PROPERTIES FOLDER Tools)
-  add_dependencies(${PROJECT_NAME}CommonPrecompiledHeaders ${PROJECT_NAME}Format)
 endif()
 
 if(DOT_EXE)
